@@ -38,11 +38,11 @@ download_nfd_log() {
     if [ "x86_64" = $ARCH ]
     then
         echo "Downloading nfd_log binary for $ARCH architecture..."
-        curl -L "$NFD_LOG_X86_DOWNLOAD_URL" -o ./nfd_log || exit 1
+        curl -sL "$NFD_LOG_X86_DOWNLOAD_URL" -o ./nfd_log || exit 1
     elif [ "aarch64" = $ARCH ]
     then
         echo "Downloading nfd_log binary for $ARCH architecture..."
-        curl -L "$NFD_LOG_AARCH64_DOWNLOAD_URL" -o ./nfd_log || exit 1
+        curl -sL "$NFD_LOG_AARCH64_DOWNLOAD_URL" -o ./nfd_log || exit 1
     else
         echo "Unsupported architecture: $ARCH"
         exit 1
