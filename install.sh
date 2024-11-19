@@ -15,10 +15,10 @@ CONFIG_FILE="/etc/ndn/nfd.conf"
 LOG_BINARY="nfd_log"
 READ_BINARY="nfd_read"
 BUILD_PATH="target/release/"
-NFD_LOG_X86_DOWNLOAD_URL="https://github.com/Quarmire/releases/download/all/nfd_log_x86_64"
-NFD_LOG_AARCH64_DOWNLOAD_URL="https://github.com/Quarmire/releases/download/all/nfd_log_aarch64"
-NFD_READ_X86_DOWNLOAD_URL="https://github.com/Quarmire/releases/download/all/nfd_read_x86_64"
-NFD_READ_AARCH64_DOWNLOAD_URL="https://github.com/Quarmire/releases/download/all/nfd_read_aarch64"
+NFD_LOG_X86_DOWNLOAD_URL="https://github.com/Quarmire/nfd-log/releases/download/all/nfd_log_x86_64"
+NFD_LOG_AARCH64_DOWNLOAD_URL="https://github.com/Quarmire/nfd-log/releases/download/all/nfd_log_aarch64"
+NFD_READ_X86_DOWNLOAD_URL="https://github.com/Quarmire/nfd-log/releases/download/all/nfd_read_x86_64"
+NFD_READ_AARCH64_DOWNLOAD_URL="https://github.com/Quarmire/nfd-log/releases/download/all/nfd_read_aarch64"
 INSTALL_PATH="/usr/bin/"
 
 compile_binaries() {
@@ -54,10 +54,11 @@ download_binaries() {
         echo "Unsupported architecture: $ARCH"
         exit 1
     fi
-    sudo chmod +x "$LOG_BINARY"
-    sudo chmod +x "$READ_BINARY"
-    sudo mv ./$LOG_BINARY "$INSTALL_PATH$LOG_BINARY"
-    sudo mv ./$READ_BINARY "$INSTALL_PATH$READ_BINARY"
+    chmod +x "./$LOG_BINARY"
+    chmod +x "./$READ_BINARY"
+    sudo mv "./$LOG_BINARY" "$INSTALL_PATH$LOG_BINARY"
+    sudo mv "./$READ_BINARY" "$INSTALL_PATH$READ_BINARY"
+    echo "$INSTALL_PATH$READ_BINARY"
     echo "Downloaded and installed nfd_log and nfd_read."
 }
 
