@@ -7,8 +7,10 @@ set -e
 SERVICE_FILE="/lib/systemd/system/nfd.service"
 CONFIG_FILE="/etc/ndn/nfd.conf"
 ORIG_CONFIG_FILE="/etc/ndn/nfd.conf.sample"
-RUST_BINARY="nfd_log"
-INSTALL_PATH="/usr/bin/$RUST_BINARY"
+LOG_BINARY="nfd_log"
+READ_BINARY="nfd_read"
+LOG_INSTALL_PATH="/usr/bin/$LOG_BINARY"
+READ_INSTALL_PATH="/usr/bin/$READ_BINARY"
 
 # Update the systemd service file
 update_service_file() {
@@ -32,7 +34,9 @@ restore_nfd_conf() {
 # Remove nfd_log from /usr/bin
 remove_nfd_log() {
     echo "Removing nfd_log..."
-    sudo rm "$INSTALL_PATH"
+    sudo rm "$LOG_INSTALL_PATH"
+    echo "Removing nfd_read..."
+    sudo rm "$READ_INSTALL_PATH"
 }
 
 # Stop the NFD service
