@@ -8,6 +8,20 @@ Run the commands:
 ```
 chmod +x install.sh
 ```
+For resource-constrained systems, use:
 ```
-./install.sh
+./install.sh download
+```
+If you would like to compile from source, use:
+```
+./install.sh compile
+```
+
+## Uninstallation
+Run the commands:
+```
+chmod +x uninstall.sh
+```
+```
+./uninstall.sh
 ```
