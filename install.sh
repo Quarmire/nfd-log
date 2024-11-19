@@ -15,9 +15,9 @@ CONFIG_FILE="/etc/ndn/nfd.conf"
 LOG_BINARY="nfd_log"
 READ_BINARY="nfd_read"
 BUILD_PATH="target/release/"
-NFD_LOG_X86_DOWNLOAD_URL="https://github.com/Quarmire/releases/download/all/nfd_log_x86"
+NFD_LOG_X86_DOWNLOAD_URL="https://github.com/Quarmire/releases/download/all/nfd_log_x86_64"
 NFD_LOG_AARCH64_DOWNLOAD_URL="https://github.com/Quarmire/releases/download/all/nfd_log_aarch64"
-NFD_READ_X86_DOWNLOAD_URL="https://github.com/Quarmire/releases/download/all/nfd_read_x86"
+NFD_READ_X86_DOWNLOAD_URL="https://github.com/Quarmire/releases/download/all/nfd_read_x86_64"
 NFD_READ_AARCH64_DOWNLOAD_URL="https://github.com/Quarmire/releases/download/all/nfd_read_aarch64"
 INSTALL_PATH="/usr/bin/"
 
@@ -42,14 +42,14 @@ download_binaries() {
     ARCH=$(uname -m)
     if [ "x86_64" = $ARCH ]
     then
-        echo "Downloading nfd_log binary for $ARCH architecture..."
+        echo "Downloading binaries for $ARCH architecture..."
         curl -sL "$NFD_LOG_X86_DOWNLOAD_URL" -o ./nfd_log || exit 1
-        curl -sL "$NFD_READ_X86_DOWNLOAD_URL" -o ./nfd_log || exit 1
+        curl -sL "$NFD_READ_X86_DOWNLOAD_URL" -o ./nfd_read || exit 1
     elif [ "aarch64" = $ARCH ]
     then
-        echo "Downloading nfd_log binary for $ARCH architecture..."
+        echo "Downloading binaries for $ARCH architecture..."
         curl -sL "$NFD_LOG_AARCH64_DOWNLOAD_URL" -o ./nfd_log || exit 1
-        curl -sL "$NFD_READ_AARCH64_DOWNLOAD_URL" -o ./nfd_log || exit 1
+        curl -sL "$NFD_READ_AARCH64_DOWNLOAD_URL" -o ./nfd_read || exit 1
     else
         echo "Unsupported architecture: $ARCH"
         exit 1
